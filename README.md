@@ -1,84 +1,148 @@
 # Tailor Management System
 
-The Tailor Management System is a comprehensive software solution designed to streamline and enhance the management of tailor shops. This system provides a set of features that cater to the needs of both tailor shop owners and staff members. The system aims to facilitate effective customer information management, order tracking, measurement recording, staff management, financial tracking, customer communication, and system customization.
+The Tailor Management System is a comprehensive software solution designed to streamline the operations of tailor shops, providing efficient management of customers, orders, staff, finances, and communication. This ReadMe outlines the key user stories and their corresponding acceptance criteria, illustrating the system's functionality and benefits.
 
 ## User Stories
 
-### User Story 1: Managing Customer Information
+### User Story 1: User Authentication and Access Control
 
-As a tailor shop owner, you can effectively manage customer information to maintain records of preferences and transactions. The system allows you to:
+As a user of the Tailor Management System, I want to have a secure and role-based authentication system so that I can access the application with appropriate permissions.
 
-- Add new customers with their name, contact details, and relevant information.
-- View a list of all customers and their basic details.
-- Edit the details of existing customers.
-- Delete customers from the system when necessary.
+**Acceptance Criteria:**
 
-### User Story 2: Recording Cloth Measurements
+- There are separate login interfaces for admin, tailor, and customers.
+- Each user type has their own dashboard and restricted access based on their roles.
+- Admin, tailor, and customer accounts are securely authenticated using unique usernames and passwords.
+- Customers can view their order history and current order status after logging in.
+- Tailors can access a list of customers they are assigned to and manage measurements and orders for those customers.
+- Admin has full access to manage all aspects of the application, including user accounts and system settings.
+- Users receive appropriate error messages for failed login attempts and are logged out after a certain period of inactivity.
 
-As a tailor, you can easily record and manage measurements tailored to each customer's unique style and requirements. The system offers:
+### User Story 2: Managing Customer Information
 
-- Input for various measurements across different body parts.
-- Flexibility to add, edit, and delete different measurement types.
-- Ability to define measurement parts for each cloth type, ensuring accurate and consistent measurements.
+As a tailor shop owner, I want to be able to manage my customers' information effectively so that I can maintain a record of their preferences and transactions.
 
-### User Story 3: Managing Staff and Salary
+**Acceptance Criteria:**
 
-For business owners, the system facilitates effective staff management and timely payment of wages. You can:
+- I can add a new customer by providing their name, contact details, and other relevant information.
+- I can view a list of all my customers along with their basic details.
+- I can edit the details of an existing customer.
+- I can delete a customer from the system if necessary.
 
-- Add new staff members with personal information, designation, and salary details.
-- View a comprehensive list of all staff members, roles, and salaries.
-- Edit staff details, including salary and designation adjustments.
-- Record and manage staff salary payments efficiently.
+### User Story 3: Recording Cloth Measurements
 
-### User Story 4: Tracking Income and Expenses
+As a tailor, I need a way to record and manage measurements for each customer's unique style and requirements.
 
-The system empowers business owners to track financial transactions, providing a clear overview of income and expenses. You can:
+**Acceptance Criteria:**
 
-- Categorize income and expense transactions for better organization.
-- Add income transactions with source and amount details.
-- View a list of income transactions and their respective categories.
-- Add expense transactions with category and amount specifics.
-- Access a list of expense transactions and corresponding categories.
+- I can input various measurements for different parts of the body for each customer.
+- I can add, edit, and delete different types of measurements.
+- I can define measurement parts for each cloth type to ensure accurate and consistent measurements.
 
-### User Story 5: Managing Orders
+### User Story 4: Managing Orders
 
-Tailors can efficiently manage customer orders through the system's order management feature. The system enables you to:
+As a tailor, I need a system to manage customer orders efficiently.
 
-- Create, view, edit, and delete customer orders seamlessly.
-- Include essential order details such as customer measurements, cloth type, and notes.
-- Update order status, allowing you to track progress (e.g., pending, completed, delivered).
+**Acceptance Criteria:**
 
-### User Story 6: Communication with Customers
+- I can create, view, edit, and delete customer orders.
+- Each order includes details such as the customer's measurements, selected cloth type, and any additional notes.
+- I can update the status of an order (e.g., pending, completed, delivered).
 
-Tailors can communicate effectively with customers via SMS and email for various updates and notifications. The system offers:
+### User Story 5: Tailor-Customer Relationship Management
 
-- SMS notifications for informing customers about order status updates.
-- Email notifications for sharing promotions, new designs, and order confirmations.
-- Customizable SMS and email templates for different communication needs.
+As a tailor, I want to be able to manage my relationship with customers by maintaining customer-specific records and order details.
 
-### User Story 7: System Configuration and Settings
+**Acceptance Criteria:**
 
-Administrators have the power to customize system settings to align with business requirements. The system provides options to:
+- Tailors can view a list of customers assigned to them upon logging in.
+- For each customer, tailors can see their contact details, order history, and measurements.
+- Tailors can update customer measurements and add new orders for their assigned customers.
+- Tailors can update the status of orders they are working on and communicate order-related updates to customers.
+- Tailors can manage their availability status (e.g., available, busy) to indicate their availability for new orders.
 
-- Upload and change the business logo and branding elements.
-- Manage office documents to attach to customer communications.
-- Configure SMS and email templates for automated notifications.
-- Access and modify system settings to tailor the software to specific business needs.
+### User Story 6: Customer Self-Service Portal
 
-### User Story 8: Customer Feedback and Tailor Recognition
+As a customer, I want to have a self-service portal where I can log in, view my order history, and track the status of my ongoing orders.
 
-As a customer, I want the ability to provide feedback on my tailoring experience and compliment exceptional service. The system offers:
+**Acceptance Criteria:**
 
-- Submission of feedback about tailoring experience, including compliments and suggestions.
-- Ability to rate tailor's service or provide written comments.
-- Review and acknowledgment of customer feedback by the tailor shop owner and staff.
-- Recognition or reward for exceptional tailors based on positive customer feedback.
+- Customers can create an account or log in using their registered email and password.
+- After logging in, customers can view a list of their previous orders, along with order details and status.
+- Customers can see real-time updates on the progress and status of their ongoing orders.
+- Customers receive email or SMS notifications when their order status changes.
+- Customers can request support or send inquiries related to their orders through the portal.
 
-## Getting Started
+### User Story 7: Communication with Customers
 
-To start using the Tailor Management System, follow these steps:
+As a tailor, I want to be able to communicate with my customers using SMS and email for various updates and notifications.
 
-1. Add customer information, staff details, and measurement templates as required.
-2. Begin managing customer orders, tracking finances, and communicating with customers seamlessly.
+**Acceptance Criteria:**
 
-Thank you for choosing the Tailor Management System to enhance your fashion/tailor shop's efficiency and organization. If you encounter any issues or need assistance, please refer to the user manual or contact our support team.
+- I can send SMS notifications to customers regarding order status updates.
+- I can send email notifications to customers regarding promotions, new designs, and order confirmations.
+- I can customize and manage SMS and email templates for different communication purposes.
+
+### User Story 8: Tracking Income and Expenses
+
+As a business owner, I want to keep track of my business's financial transactions to ensure a clear overview of income and expenses.
+
+**Acceptance Criteria:**
+
+- I can add different categories for income and expense transactions.
+- I can add income transactions along with details such as the source and amount.
+- I can view a list of income transactions and their respective categories.
+- I can add expense transactions along with details such as the category and amount.
+- I can view a list of expense transactions and their respective categories.
+
+### User Story 9: Managing Staff and Salary
+
+As a business owner, I want to manage my staff effectively and ensure timely payment of their wages.
+
+**Acceptance Criteria:**
+
+- I can add new staff members with their personal information, designation, and salary details.
+- I can view a list of all staff members along with their roles and salaries.
+- I can edit staff details including their salary and designation.
+- I can record and manage the payment of staff salaries.
+
+### User Story 10: Admin Dashboard and Management
+
+As an admin, I want to have full control over the entire application and its users to ensure smooth operations.
+
+**Acceptance Criteria:**
+
+- Admin can log in to a dedicated admin dashboard using their credentials.
+- The admin dashboard provides an overview of system activities, such as new orders, recent customer interactions, and financial summaries.
+- Admin can manage user accounts, including creating, editing, and deactivating accounts.
+- Admin can assign tailors to specific customers and manage tailor-customer relationships.
+- Admin can access and modify system settings, including SMS and email templates.
+- Admin can generate reports on various aspects of the business, such as sales, expenses, and staff performance.
+
+### User Story 11: System Configuration and Settings
+
+As an administrator, I want to have control over system settings and configurations to tailor the software to my business needs.
+
+**Acceptance Criteria:**
+
+- I can upload and change the business logo and other branding elements.
+- I can manage office documents that might need to be attached to customer communications.
+- I can configure SMS and email templates for automated notifications.
+- I can access and modify system settings to customize the software to my business requirements.
+
+### User Story 12: Customer Feedback and Tailor Recognition
+
+As a customer, I want the ability to provide feedback on my tailoring experience and compliment exceptional service.
+
+**Acceptance Criteria:**
+
+- I can submit feedback about my tailoring experience, including compliments for outstanding service or suggestions for improvement.
+- The system allows me to rate the tailor's service on a scale or provide written comments.
+- The tailor shop owner and staff can review and acknowledge customer feedback.
+- Exceptional tailors can be recognized or rewarded based on positive feedback received from customers.
+
+---
+
+These user stories encompass a wide range of functionalities within the Tailor Management System, addressing the needs of the tailor shop owner, staff, and customers. By implementing these features, the system aims to provide a comprehensive solution that enhances efficiency, customer satisfaction, and business growth. The user-centered approach ensures that each user type has the appropriate access and functionality, resulting in a secure, tailored, and efficient management solution.
+
+Feel free to use and expand upon this ReadMe template to provide a detailed overview of the Tailor Management System's capabilities and benefits.
