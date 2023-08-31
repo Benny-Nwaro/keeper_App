@@ -144,5 +144,3 @@ As a customer, I want the ability to provide feedback on my tailoring experience
 ---
 
 These user stories encompass a wide range of functionalities within the Tailor Management System, addressing the needs of the tailor shop owner, staff, and customers. By implementing these features, the system aims to provide a comprehensive solution that enhances efficiency, customer satisfaction, and business growth. The user-centered approach ensures that each user type has the appropriate access and functionality, resulting in a secure, tailored, and efficient management solution.
-
-Feel free to use and expand upon this ReadMe template to provide a detailed overview of the Tailor Management System's capabilities and benefits.

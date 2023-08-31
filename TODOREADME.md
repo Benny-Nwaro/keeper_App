@@ -1,4 +1,3 @@
-```
 # Fashion/Tailor Management System
 
 This repository contains the frontend and backend implementations of the Tailor Management System, a comprehensive application for managing a tailor shop's operations, customer interactions, and order processing. The system is divided into frontend and backend components, each serving specific functions. This README provides a breakdown of tasks in a TODO list format for both the frontend and backend implementations.
@@ -159,4 +158,3 @@ This repository contains the frontend and backend implementations of the Tailor 
 ---
 
 This README provides a comprehensive breakdown of tasks for both the frontend and backend implementations of the Tailor Management System. Following these TODO lists will help in managing the development process, tracking progress, and ensuring the successful creation of the system's features and functionalities.
-```
