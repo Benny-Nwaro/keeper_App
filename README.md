@@ -4,7 +4,7 @@ The Tailor Management System is a comprehensive software solution designed to st
 
 ## User Stories
 
-### User Story 1: User Authentication and Access Control
+### User Authentication and Access Control
 
 As a user of the Tailor Management System, I want to have a secure and role-based authentication system so that I can access the application with appropriate permissions.
 
@@ -18,7 +18,7 @@ As a user of the Tailor Management System, I want to have a secure and role-base
 - Admin has full access to manage all aspects of the application, including user accounts and system settings.
 - Users receive appropriate error messages for failed login attempts and are logged out after a certain period of inactivity.
 
-### User Story 2: Managing Customer Information
+### Managing Customer Information
 
 As a tailor shop owner, I want to be able to manage my customers' information effectively so that I can maintain a record of their preferences and transactions.
 
@@ -29,7 +29,7 @@ As a tailor shop owner, I want to be able to manage my customers' information ef
 - I can edit the details of an existing customer.
 - I can delete a customer from the system if necessary.
 
-### User Story 3: Recording Cloth Measurements
+### Recording Cloth Measurements
 
 As a tailor, I need a way to record and manage measurements for each customer's unique style and requirements.
 
@@ -39,7 +39,7 @@ As a tailor, I need a way to record and manage measurements for each customer's 
 - I can add, edit, and delete different types of measurements.
 - I can define measurement parts for each cloth type to ensure accurate and consistent measurements.
 
-### User Story 4: Managing Orders
+### Managing Orders
 
 As a tailor, I need a system to manage customer orders efficiently.
 
@@ -49,7 +49,7 @@ As a tailor, I need a system to manage customer orders efficiently.
 - Each order includes details such as the customer's measurements, selected cloth type, and any additional notes.
 - I can update the status of an order (e.g., pending, completed, delivered).
 
-### User Story 5: Tailor-Customer Relationship Management
+### Tailor-Customer Relationship Management
 
 As a tailor, I want to be able to manage my relationship with customers by maintaining customer-specific records and order details.
 
@@ -61,7 +61,7 @@ As a tailor, I want to be able to manage my relationship with customers by maint
 - Tailors can update the status of orders they are working on and communicate order-related updates to customers.
 - Tailors can manage their availability status (e.g., available, busy) to indicate their availability for new orders.
 
-### User Story 6: Customer Self-Service Portal
+### Customer Self-Service Portal
 
 As a customer, I want to have a self-service portal where I can log in, view my order history, and track the status of my ongoing orders.
 
@@ -73,7 +73,7 @@ As a customer, I want to have a self-service portal where I can log in, view my 
 - Customers receive email or SMS notifications when their order status changes.
 - Customers can request support or send inquiries related to their orders through the portal.
 
-### User Story 7: Communication with Customers
+### Communication with Customers
 
 As a tailor, I want to be able to communicate with my customers using SMS and email for various updates and notifications.
 
@@ -83,7 +83,7 @@ As a tailor, I want to be able to communicate with my customers using SMS and em
 - I can send email notifications to customers regarding promotions, new designs, and order confirmations.
 - I can customize and manage SMS and email templates for different communication purposes.
 
-### User Story 8: Tracking Income and Expenses
+### Tracking Income and Expenses
 
 As a business owner, I want to keep track of my business's financial transactions to ensure a clear overview of income and expenses.
 
@@ -95,7 +95,7 @@ As a business owner, I want to keep track of my business's financial transaction
 - I can add expense transactions along with details such as the category and amount.
 - I can view a list of expense transactions and their respective categories.
 
-### User Story 9: Managing Staff and Salary
+### Managing Staff and Salary
 
 As a business owner, I want to manage my staff effectively and ensure timely payment of their wages.
 
@@ -106,7 +106,7 @@ As a business owner, I want to manage my staff effectively and ensure timely pay
 - I can edit staff details including their salary and designation.
 - I can record and manage the payment of staff salaries.
 
-### User Story 10: Admin Dashboard and Management
+### Admin Dashboard and Management
 
 As an admin, I want to have full control over the entire application and its users to ensure smooth operations.
 
@@ -119,7 +119,7 @@ As an admin, I want to have full control over the entire application and its use
 - Admin can access and modify system settings, including SMS and email templates.
 - Admin can generate reports on various aspects of the business, such as sales, expenses, and staff performance.
 
-### User Story 11: System Configuration and Settings
+### System Configuration and Settings
 
 As an administrator, I want to have control over system settings and configurations to tailor the software to my business needs.
 
@@ -130,7 +130,7 @@ As an administrator, I want to have control over system settings and configurati
 - I can configure SMS and email templates for automated notifications.
 - I can access and modify system settings to customize the software to my business requirements.
 
-### User Story 12: Customer Feedback and Tailor Recognition
+### Customer Feedback and Tailor Recognition
 
 As a customer, I want the ability to provide feedback on my tailoring experience and compliment exceptional service.
 
