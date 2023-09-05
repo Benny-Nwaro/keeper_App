@@ -1,4 +1,4 @@
-import React from "react";
+import {Link} from 'react-router-dom'
 
 export default function Navbar() {
   return (
@@ -16,36 +16,26 @@ export default function Navbar() {
             </div>
             <div className="hidden sm:ml-6 sm:block">
               <div className="flex items-center space-x-4 right-0 ">
-                <a
-                  href="#"
+               
+                <Link to="/" 
                   className="text-black hover:bg-pink-600 hover:text-white  px-3 py-2 text-sm font-medium"
-                >
-                  Home
-                </a>
-                <a
-                  href="#"
+                  >Home</Link>
+
+                   <Link to="/about" 
                   className="text-black hover:bg-pink-600 hover:text-white  px-3 py-2 text-sm font-medium"
-                >
-                  Corporate
-                </a>
-                <a
-                  href="#"
+                  >About</Link>
+
+                   <Link to="/consultancy" 
                   className="text-black hover:bg-pink-600 hover:text-white  px-3 py-2 text-sm font-medium"
-                >
-                  Services
-                </a>
-                <a
-                  href="#"
+                  >Consultancy</Link>
+
+
+                  <Link to="/contact" 
                   className="text-black hover:bg-pink-600 hover:text-white  px-3 py-2 text-sm font-medium"
-                >
-                  Careers
-                </a>
-                <a
-                  href="#"
-                  className="text-black hover:bg-pink-600 hover:text-white  px-3 py-2 text-sm font-medium"
-                >
-                  Contact
-                </a>
+                  >Contact</Link>
+                  
+              
+                
               </div>
             </div>
           </div>
