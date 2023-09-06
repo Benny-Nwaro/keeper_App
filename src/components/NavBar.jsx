@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { hamburger } from "../assets/icons";
 import { logo2 } from "../assets/images";
 export const NavBar = () => {
@@ -12,13 +12,26 @@ export const NavBar = () => {
         </Link>
 
         <ul className="flex-1 flex gap-x-10 font-palanquin text-[20px] font-medium max-lg:hidden">
-          <li className="cursor-pointer">Home</li>
-          <li className="cursor-pointer">About</li>
-          <li className="cursor-pointer">Contact</li>
+          <li className="">
+            <NavLink to=".">Home</NavLink>
+          </li>
+          <li className="">
+            <NavLink to="about">About</NavLink>
+          </li>
+          <li className="">
+            <NavLink to="contact">Contact</NavLink>
+          </li>
+          <li className="">
+            <NavLink to="dashboard">Dashboard</NavLink>
+          </li>
         </ul>
         <ul className="ml-[15px] flex gap-x-10 font-palanquin text-[20px] font-medium max-lg:hidden">
-          <li className="cursor-pointer">Login</li>
-          <li className="cursor-pointer">Register</li>
+          <li className="">
+            <NavLink to="auth/login">Login</NavLink>
+          </li>
+          <li className="">
+            <NavLink to="auth/register">Register</NavLink>
+          </li>
         </ul>
         <div className="hidden max-lg:block">
           <img src={hamburger} alt="Hamburger" width={35} height={35} />

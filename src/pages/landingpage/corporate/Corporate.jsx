@@ -1,5 +1,5 @@
 
-export const corporate = () => {
+export const Corporate = () => {
   return (
     <div>corporate</div>
   )
