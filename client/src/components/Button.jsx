@@ -3,29 +3,16 @@ import React from "react";
 export default function Button() {
   return (
     <div>
-      {" "}
       <button
         type="button"
-        className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
-        aria-controls="mobile-menu"
-        aria-expanded="false"
+        className="inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+        data-te-toggle="popover"
+        data-te-placement="bottom"
+        data-te-content="Bottom popover"
+        data-te-ripple-init
+        data-te-ripple-color="light"
       >
-        <span className="absolute -inset-0.5"></span>
-        <span className="sr-only">Open main menu</span>
-
-        <svg
-          className="block h-6 w-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          aria-hidden="true"
-        ></svg>
-
-        <svg
-          className="hidden h-6 w-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          aria-hidden="true"
-        ></svg>
+        Popover on bottom
       </button>
     </div>
   );
