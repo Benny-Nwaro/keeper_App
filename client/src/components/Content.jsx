@@ -19,6 +19,7 @@ export default function Content() {
 
   return (
     <div className="flex flex-col  w-100 h-auto bg-red-50 pt-5 pb-6 space-y-6">
+      <div className="h-96"></div>
       <div>
         <Popover>
           <PopoverHandler>
