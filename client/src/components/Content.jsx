@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { designer } from "../designers";
-import { gallery } from "../imageGallery";
 import {
   Popover,
   PopoverHandler,
@@ -28,7 +27,7 @@ export default function Content() {
               {designer.map((item) => (
                 <div key={item.id} onClick={() => handleDesignerClick(item.id)}>
                   <img
-                    className="h-96 w-96 rounded-lg hover:scale-110 cursor-pointer"
+                    className="h-96 w-96 rounded-lg hover:scale-110 cursor-pointer object-cover"
                     src={item.image}
                     alt="Designer Image"
                   />
