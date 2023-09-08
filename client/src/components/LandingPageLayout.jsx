@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 import {NavBar} from "./NavBar"
+import Footer from "./Footer";
 
 
 export const LandingPageLayout = () => {
@@ -8,7 +9,7 @@ export const LandingPageLayout = () => {
       <NavBar/>
 
       <Outlet />
-      <p>footer</p>
+      <Footer/>
     </>
   );
 };

@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <footer className="flex flex-col items-center bg-neutral-100 text-center dark:bg-neutral-600 lg:text-left sticky bottom-0">
+    <footer className="flex flex-col items-center bg-neutral-100 text-center dark:bg-neutral-600 lg:text-left bottom-0">
       <div className="container p-6">
         <div className="grid place-items-center md:grid-cols-2 lg:grid-cols-4">
           {/* <!--First links section--> */}
