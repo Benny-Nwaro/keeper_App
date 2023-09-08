@@ -6,10 +6,8 @@ export const About = () => {
       <div className="h-96 w-full relative">
         <img
           className="w-full h-full absolute mix-blend-overlay object-cover"
-          // src="https://t3.ftcdn.net/jpg/05/07/61/62/240_F_507616218_CbQmHTlF5jcOrcgoBYskucyd1XZzElnQ.jpg"
-          // src="https://static.vecteezy.com/system/resources/thumbnails/001/313/515/small/blue-textured-background-with-sewing-tools-free-photo.jpg"
           src={abouthero}
-          alt=""
+          alt="hero background"
         />
         <div className="w-3/4 p-2 m-auto">
           <p className="text-white text-6xl font-bold text-center mt-48 ml-20 font-palanquin">
