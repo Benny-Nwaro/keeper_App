@@ -8,6 +8,7 @@ export const LandingPageLayout = () => {
       <NavBar/>
 
       <Outlet />
+      <p>footer</p>
     </>
   );
 };
