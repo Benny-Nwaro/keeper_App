@@ -6,10 +6,10 @@ import Footer from "./Footer";
 export const LandingPageLayout = () => {
   return (
     <>
-      <NavBar/>
+      <NavBar />
 
       <Outlet />
-      <Footer/>
+      <Footer />
     </>
   );
 };
