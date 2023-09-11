@@ -4,7 +4,7 @@ import { logo2 } from "../assets/images";
 export const NavBar = () => {
   return (
     <section className="w-full py-2 shadow-md">
-      <nav className="flex justify-between items-center max-container">
+      <nav className="flex justify-between items-center max-container pl-8 pr-8">
         <Link to="/">
           <div>
             <img src={logo2} alt="logo" className="w-[30%] object-cover" />
