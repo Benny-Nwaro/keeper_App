@@ -2,7 +2,8 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <footer className="flex flex-col  bg-neutral-100  dark:bg-neutral-600 lg:text-left bottom-0">
+    <footer className="flex flex-col items-center bg-neutral-100 text-center dark:bg-neutral-600 lg:text-left bottom-0">
+
       <div className="container p-6">
         <div className="flex flex-row place-content-center space-x-12 ">
           {/*  links section--> */}
