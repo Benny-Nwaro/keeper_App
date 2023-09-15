@@ -13,10 +13,10 @@ export const Contact = () => {
         </div>
         <div className=" flex mb-4 max-md:flex-col">
           <div className=" flex flex-col w-3/4 mb-4">
-            <div className="my-8 mx-32 text-4xl text-[#35155D] font-semibold">
+            <div className="my-8 mx-32 text-4xl text-[#35155D] font-semibold max-md:m-auto max-md:w-full max-md:ml-12 max-md:mb-3" >
               <p className="font-palanquin">Hey! Let’s Talk</p>
             </div>
-            <div className="w-3/4 m-auto text-justify text-lg">
+            <div className="w-3/4 m-auto text-justify text-lg max-md:mx-12 max-md:w-full">
               <p className="font-palanquin mb-3">
                 Fash-Craft is the complete business management software for
                 fashion brands to manage all aspects of your business including
@@ -43,29 +43,29 @@ export const Contact = () => {
         </div>
       </div>
 
-      <div className="w-3/4 m-auto rounded bg-coral-red mb-12 py-5">
+      <div className="w-3/4 m-auto rounded-lg bg-[#512B81] mb-12 py-5">
         <form className="w-7/12 flex flex-col m-auto  max-md:w-full">
           <p className="m-auto text-4xl text-white font-semibold mb-5">
             Contact Us
           </p>
           <div className="flex flex-col">
             <input
-              className="border border-white h-10 font-palanquin mb-5 rounded-sm hover:border-2 text-white pl-2"
+              className="border border-white h-10 font-palanquin mb-5 rounded-lg hover:border-2 text-white bg-slate-100 pl-2 max-md:mx-3"
               type="text"
               placeholder="Name"
             />
             <input
-              className="border border-white h-10 font-palanquin mb-5 rounded-sm hover:border-2 text-white pl-2"
+              className="border border-white h-10 font-palanquin mb-5 rounded-lg hover:border-2 text-white bg-slate-100 pl-2 max-md:mx-3"
               type="text"
               placeholder="Email"
             />
             <input
-              className="border h-10 font-palanquin mb-5 rounded-sm border-white hover:border-2 text-white pl-2"
+              className="border h-10 font-palanquin mb-5 rounded-lg border-white hover:border-2 text-white bg-slate-100 pl-2 max-md:mx-3"
               type="text"
               placeholder="Subject"
             />
             <textarea
-              className="border h-28 font-palanquin mb-5 rounded-sm border-white hover:border-2 text-white pl-2"
+              className="border h-28 font-palanquin mb-5 rounded-lg border-white hover:border-2 text-white bg-slate-100 pl-2 max-md:mx-3"
               type="text"
               placeholder="Message"
             ></textarea>
@@ -74,7 +74,7 @@ export const Contact = () => {
             
             <button
               type="submit"
-              className="bg-white text-[#512B81] font-palanquin px-10 py-2 rounded hover:bg-[#512B81] hover:text-white hover:px-[38px] hover:py-[6px] hover:border-2 hover:border-white "
+              className="bg-slate-100 text-[#512B81] font-palanquin px-10 py-2 rounded hover:bg-[#512B81] hover:text-slate-100 hover:px-[38px] hover:py-[6px] hover:border-2 hover:border-slate-100 max-md:px-5"
             >
               Submit
             </button>
