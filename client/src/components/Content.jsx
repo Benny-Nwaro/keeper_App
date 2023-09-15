@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
 import { RxDotFilled } from "react-icons/rx";
 import { slides } from "../assets/images/Gallery";
@@ -74,11 +74,12 @@ export default function Content() {
       <h1 className="text-center text-6xl mt-20 animate-pulse font-semibold text-blue-800 font-['Open_Sans']">
         Checkout our Designers
       </h1>
+
       <div className="flex flex-col  w-100 h-autopt-5 pb-6 space-y-6 ">
         <div>
           <Popover>
             <PopoverHandler>
-              <div className="grid grid-cols-3 gap-4 pt-8 pl-8 pr-8 pb-8">
+              <div className="flex flex-row max-w-md mx-auto bg-white rounded-xl shadow-md  md:max-w-7xl space-x-4">
                 {" "}
                 {designer.map((item) => (
                   <div
@@ -86,11 +87,11 @@ export default function Content() {
                     onClick={() => handleDesignerClick(item.id)}
                   >
                     <img
-                      className="h-96 w-96 rounded-lg hover:scale-110 cursor-pointer hover:pacity-5 shadow-2xl o"
+                      className="h-80 mr-5 object-cover ml-2 mt-5 w-80 rounded-lg hover:scale-110 cursor-pointer hover:pacity-5 shadow-2xl o"
                       src={item.image}
                       alt="Designer Image"
                     />
-                    <h3 className="text-center pt-4 text-xl text-neutral-500  rounded-full">
+                    <h3 className="pt-4 pl-20 text-xl text-neutral-500 ">
                       {item.name}
                     </h3>
                   </div>

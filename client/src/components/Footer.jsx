@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -10,9 +10,6 @@ export default function Footer() {
           <div className="flex flex-row space-x-4 mb-6">
             <NavLink to=".">Home</NavLink>
             <NavLink to="about">About</NavLink>
-            <a href="#!" className="text-neutral-800 dark:text-neutral-200">
-              | Consultancy
-            </a>
             <NavLink to="contact">Contact</NavLink>
           </div>
 
