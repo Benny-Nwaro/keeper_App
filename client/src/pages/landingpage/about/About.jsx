@@ -23,34 +23,35 @@ export const About = () => {
           </p>
         </div>
       </div>
-      <div className=" flex flex-col gap-5 mb-4">
-        <div className=" my-8 m-auto text-4xl text-[#35155D] font-semibold">
-          <p className="font-palanquin">About Fash-Craft</p>
+      <div className="flex flex-row w-3/4 mt-5 m-auto max-md:mb-10 ">
+        <div className=" flex flex-col gap-5 w-1/2 mx-5">
+          <div className="m-auto text-4xl text-[#35155D] font-semibold">
+            <p className="font-palanquin">About Fash-Craft</p>
+          </div>
+          <div className=" m-auto text-justify text-lg">
+            <p className="font-palanquin">
+              Welcome to Fash-Craft Fashion ERP, where precision and efficiency
+              converge to empower your fashion business with comprehensive
+              enterprise management. Fash-Craft ERP is more than just software;
+              It is a dedicated solution designed to streamline and optimize
+              every aspect of your fashion enterprise.
+            </p>
+          </div>
         </div>
-        <div className="w-3/4 m-auto text-justify text-lg">
-          <p className="font-palanquin">
-            <span className="text-4xl font-semibold">W</span>elcome to
-            Fash-Craft Fashion ERP, where precision and efficiency converge to
-            empower your fashion business with comprehensive enterprise
-            management. Fash-Craft ERP is more than just software; It is a
-            dedicated solution designed to streamline and optimize every aspect
-            of your fashion enterprise.
-          </p>
-        </div>
-      </div>
 
-      <div className="w-3/4 m-auto flex  flex-col gap-5 max-md:mb-10 ">
-        <p className="m-auto text-3xl text-[#35155D] font-semibold font-palanquin my-6">
-          Crafting Enterprise Efficiency
-        </p>
-        <div className="m-auto text-justify text-lg">
-          <p className="font-palanquin">
-            At Fash-Craft, we believe in the power of precision and the value of
-            efficiency. Our ERP system is meticulously crafted to cater
-            specifically to the intricate and ever-evolving needs of the fashion
-            industry. We understand that in fashion, timing and accuracy are
-            paramount.
-          </p>
+        <div className=" flex flex-col gap-5 w-1/2 mx-5">
+          <div className="m-auto text-4xl text-[#35155D] font-semibold">
+            <p className="font-palanquin">Crafting Enterprise Efficiency</p>
+          </div>
+          <div className=" m-auto text-justify text-lg">
+            <p className="font-palanquin">
+              At Fash-Craft, we believe in the power of precision and the value
+              of efficiency. Our ERP system is meticulously crafted to cater
+              specifically to the intricate and ever-evolving needs of the
+              fashion industry. We understand that in fashion, timing and
+              accuracy are paramount.
+            </p>
+          </div>
         </div>
       </div>
 
