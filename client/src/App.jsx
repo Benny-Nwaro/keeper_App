@@ -20,6 +20,16 @@ import { DashBoardHome } from "./pages/dashboard/dashboardhome/DashBoardHome";
 import { Customers } from "./pages/dashboard/customers/Customers";
 import { Login } from "./pages/auth/login/Login";
 import { Register } from "./pages/auth/register/Register";
+import { NavContextProvider } from "./contexts/ContextProvider";
+import { Expenses } from "./pages/dashboard/expenses/Expenses";
+import { Measurements } from "./pages/dashboard/measurements/Measurements";
+import { Order } from "./pages/dashboard/orders/Order";
+import { Reports } from "./pages/dashboard/reports/Reports";
+import { Salaries } from "./pages/dashboard/salaries/Salaries";
+import { Settings } from "./pages/dashboard/settings/Settings";
+import { Store } from "./pages/dashboard/store/Store";
+import { Users } from "./pages/dashboard/users/Users";
+import {Payment} from "./pages/dashboard/payments/Payment"
 // import { NavBar } from "./components";
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -35,7 +45,19 @@ const router = createBrowserRouter(
 
       <Route path="dashboard" element={<DashBoardLayout />}>
         <Route index element={<DashBoardHome />} />
-        <Route path="services" element={<Customers />} />
+        <Route path="customers" element={<Customers />} />
+        <Route path="expenses" element={<Expenses />} />
+        <Route path="measurements" element={<Measurements />} />
+        <Route path="orders" element={<Order />} />
+        {/* <Route index element={<Payments />} /> */}
+        <Route path="payments" element={<Payment />} />
+        <Route path="reports" element={<Reports />} />
+        <Route path="salaries" element={<Salaries />} />
+        <Route path="settings" element={<Settings />} />
+        <Route path="store" element={<Store />} />
+        <Route path="users" element={<Users />} />{" "}
+        <Route path="reports" element={<Reports />} />{" "}
+        <Route path="*" element={<NotFound />} />
       </Route>
 
       <Route path="/auth/login" element={<Login />} />
@@ -44,7 +66,11 @@ const router = createBrowserRouter(
   )
 );
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <NavContextProvider>
+      <RouterProvider router={router} />
+    </NavContextProvider>
+  );
 }
 
 export default App;
