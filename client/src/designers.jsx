@@ -9,7 +9,7 @@ export const designer = [
 
   {
     id: 2,
-    name: "BLessing Odei fashion House",
+    name: "BLessing Odei",
     image: "https://guardian.ng/wp-content/uploads/2018/12/Ojeih-1-2-12-18.jpg",
     note: "There are two different kinds of Egusi soup, Fried and cooked. The instructions above work for fried. Please don't try this for the cooked method. Thanks 😂",
   },
@@ -30,7 +30,7 @@ export const designer = [
 
   {
     id: 5,
-    name: "BLessing Odei fashion House",
+    name: "BLessing Odei",
     image: "https://guardian.ng/wp-content/uploads/2018/12/Ojeih-1-2-12-18.jpg",
     note: "There are two different kinds of Egusi soup, Fried and cooked. The instructions above work for fried. Please don't try this for the cooked method. Thanks 😂",
   },
