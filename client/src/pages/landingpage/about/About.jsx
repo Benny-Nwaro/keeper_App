@@ -17,14 +17,14 @@ export const About = () => {
           src={abouthero}
           alt="hero background"
         />
-        <div className="absolute top-0  w-3/4 p-2 m-auto max-md:h-auto max-md:w-auto max-md:m-auto max-md:p-auto ">
-          <p className="text-white text-6xl font-bold text-center mt-48 ml-20 font-palanquin max-md:m-auto max-md:text-3xl max-md:mt-48 md: ">
+        <div className="absolute top-20  w-3/4 p-2 md:mt-20 lg:mt-40 xl:mt-48 2xl:mt-48 m-auto max-md:h-auto max-md:w-auto max-md:m-auto max-md:p-auto">
+          <p className="text-white text-6xl font-bold text-center  ml-20 font-palanquin max-md:m-auto max-md:text-xl max-md:mt-48 max-md:w-full max-md:h-full">
             Take Your Apparel Brand to the Next Level with Fash-Craft
           </p>
         </div>
       </div>
-      <div className="flex flex-row w-3/4 mt-5 m-auto max-md:mb-10 ">
-        <div className=" flex flex-col gap-5 w-1/2 mx-5">
+      <div className="flex flex-row w-3/4 mt-5 m-auto max-md:mb-10 max-md:flex-col max-md:w-auto">
+        <div className=" flex flex-col gap-5 w-1/2 mx-5 max-md:w-auto ">
           <div className="m-auto text-4xl text-[#35155D] font-semibold">
             <p className="font-palanquin">About Fash-Craft</p>
           </div>
@@ -39,8 +39,8 @@ export const About = () => {
           </div>
         </div>
 
-        <div className=" flex flex-col gap-5 w-1/2 mx-5">
-          <div className="m-auto text-4xl text-[#35155D] font-semibold">
+        <div className=" flex flex-col gap-5 w-1/2 mx-5 max-md:w-auto ">
+          <div className="m-auto text-4xl text-[#35155D] font-semibold max-md:w-full">
             <p className="font-palanquin">Crafting Enterprise Efficiency</p>
           </div>
           <div className=" m-auto text-justify text-lg">
