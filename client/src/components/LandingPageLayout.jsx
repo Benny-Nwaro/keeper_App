@@ -7,7 +7,6 @@ export const LandingPageLayout = () => {
   return (
     <>
       <NavBar />
-
       <Outlet />
       <Footer />
     </>
