@@ -7,6 +7,17 @@ CREATE TABLE base_model (
     is_active BOOLEAN DEFAULT TRUE
 );
 
+CREATE TABLE Roles (
+    role_id SERIAL PRIMARY KEY,
+    role_name VARCHAR(50) NOT NULL
+);
+
+
+CREATE TABLE Permissions (
+    permission_id SERIAL PRIMARY KEY,
+    permission_name VARCHAR(50) NOT NULL
+);
+
 CREATE TABLE users (
     user_id SERIAL PRIMARY KEY,
     username VARCHAR(50) UNIQUE NOT NULL,
@@ -14,7 +25,9 @@ CREATE TABLE users (
     email VARCHAR(100) UNIQUE NOT NULL,
     first_name VARCHAR(50),
     last_name VARCHAR(50),
-    is_verified BOOLEAN DEFAULT FALSE
+    is_verified BOOLEAN DEFAULT FALSE,
+    role_id INT NOT NULL,
+    FOREIGN KEY (role_id) REFERENCES Role(role_id)
 ) INHERITS (base_model);
 
 
@@ -38,7 +51,7 @@ CREATE TABLE staffs (
     salary INT DEFAULT 0,
     date_employed DATE,
     phone_number VARCHAR(20) NOT NULL,
-    is_verified BOOLEAN DEFAULT FALSE
+    -- is_verified BOOLEAN DEFAULT FALSE
 ) INHERITS (base_model);
 
 ALTER TABLE staffs
@@ -53,12 +66,12 @@ ADD CONSTRAINT fk_staffs_users_id FOREIGN KEY (users_id) REFERENCES users(user_i
 
 CREATE TABLE customers (
     customer_id SERIAL PRIMARY KEY,
-    users_id INT UNIQUE NOT NULL,
+    user_id INT UNIQUE NOT NULL,
     staff_id INT NOT NULL,
     phone_number VARCHAR(20),
     customer_address TEXT,
     loyalty_points INT DEFAULT 0,
-    is_verified BOOLEAN DEFAULT FALSE
+    -- is_verified BOOLEAN DEFAULT FALSE
 
 ) INHERITS (base_model);
 
@@ -90,3 +103,13 @@ ALTER TABLE orders
 ADD CONSTRAINT fk_order_customer_id_new FOREIGN KEY (customer_id) REFERENCES customers(customer_id);
 
 
+
+
+
+
+CREATE TABLE RolePermissions (
+    role_id INT NOT NULL,
+    permission_id INT NOT NULL,
+    FOREIGN KEY (role_id) REFERENCES Roles(role_id),
+    FOREIGN KEY (permission_id) REFERENCES Permissions(permission_id)
+);

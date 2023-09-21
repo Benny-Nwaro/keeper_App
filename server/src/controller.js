@@ -1,14 +1,29 @@
 import pool from "../db.js";
 import {
   addCustomerQuery,
+  addOrderQuery,
   addStaffQuery,
   addUserQuery,
   checkExistenceQuery,
   checkUserExistenceQuery,
   getStaffsPositionsQuery,
+  getOrdersQuery,
+  getStaffssQuery,
+  getCustomersQuery,
+  getTotalCountsQuery,
+  checkUserLoginExistenceQuery,
+  getAllStaffsDataQuery,
+  getUsersQuery,
+  getSingleStaffsDataQuery,
+  getAllCustomersAndOrdersDataQuery,
+  getSingleCustomerOrderDataQuery,
 } from "./queries.js";
 import * as bcrypt from "bcrypt";
+import JWT from "jsonwebtoken";
+
 const testRoute = async (req, res) => {
+  const user = req.user;
+  console.log(user && user.id);
   res.status(200).json({ message: "Testing successful" });
 };
 
@@ -270,9 +285,10 @@ const addCustomer = async (req, res) => {
       !loyalty_points ||
       !phone_number
     ) {
-      return res
-        .status(400)
-        .send({ message: "Ensure you fill all the customer required fields." });
+      return res.status(400).send({
+        status: "error",
+        message: "Ensure you fill all the customer required fields.",
+      });
     }
 
     const lowercaseEmail = email.toLowerCase();
@@ -453,9 +469,346 @@ const addStaff = async (req, res) => {
   );
 };
 
+const addOrders = async (req, res, next) => {
+  try {
+    const {
+      customer_id,
+      staff_id,
+      order_date,
+      cloth_type,
+      quantity,
+      order_status,
+      order_payment,
+      order_description,
+      is_verified,
+    } = req.body;
+    // Check if any of the required fields are missing
+    if (
+      !customer_id ||
+      !staff_id ||
+      !order_date ||
+      !cloth_type ||
+      !quantity ||
+      !order_description ||
+      !is_verified
+    ) {
+      return res.status(400).send({
+        status: "error",
+        message: "Ensure you fill all the order required fields.",
+      });
+    }
+
+    try {
+      pool.query(
+        addOrderQuery,
+        [
+          staff_id,
+          customer_id,
+          order_date,
+          cloth_type,
+          quantity,
+          order_status,
+          order_payment,
+          order_description,
+          is_verified,
+        ],
+        (queryError, queryResult) => {
+          if (queryError) {
+            console.error("Database error:", queryError);
+            return res.status(400).send({
+              status: "error",
+              message: queryError.message,
+              detail: queryError.detail,
+            });
+          }
+          res.status(201).send({
+            success: true,
+            message: "Order Created successfully!",
+          });
+        }
+      );
+    } catch (err) {
+      console.log("errorororo");
+    }
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};
+
+const getAllStaffs = async (req, res) => {
+  pool.query(getStaffssQuery, (queryError, queryResult) => {
+    if (queryError) {
+      console.error("Database error:", queryError);
+      return res.status(400).send({
+        status: "error",
+        message: queryError.message,
+        detail: queryError.detail,
+      });
+    }
+
+    return res.status(200).json({
+      status: "success",
+      data: queryResult.rows,
+      total: queryResult.rows.length,
+    });
+  });
+};
+
+const getAllCustomers = async (req, res) => {
+  pool.query(getCustomersQuery, (queryError, queryResult) => {
+    if (queryError) {
+      console.error("Database error:", queryError);
+      return res.status(400).send({
+        status: "error",
+        message: queryError.message,
+        detail: queryError.detail,
+      });
+    }
+    return res.status(200).json({
+      status: "success",
+      data: queryResult.rows,
+      total: queryResult.rows.length,
+    });
+  });
+};
+
+const getAllOrders = async (req, res) => {
+  pool.query(getOrdersQuery, (queryError, queryResult) => {
+    if (queryError) {
+      console.error("Database error:", queryError);
+      return res.status(400).send({
+        status: "error",
+        message: queryError.message,
+        detail: queryError.detail,
+      });
+    }
+
+    return res.status(200).json({
+      status: "success",
+      data: queryResult.rows,
+      total: queryResult.rows.length,
+    });
+  });
+};
+
+const getTotalCounts = async (req, res) => {
+  pool.query(getTotalCountsQuery, (queryError, queryResult) => {
+    if (queryError) {
+      console.error("Database error:", queryError);
+      return res.status(400).send({
+        status: "error",
+        message: queryError.message,
+        detail: queryError.detail,
+      });
+    }
+
+    const totalCounts = {};
+
+    queryResult.rows.forEach((row) => {
+      totalCounts[row.entity] = row.total_count;
+    });
+
+    return res.status(200).json({
+      status: "success",
+      data: totalCounts,
+    });
+  });
+};
+
+const login = async (req, res) => {
+  const client = await pool.connect();
+  try {
+    await client.query("BEGIN");
+    const { usernameOrEmail, password } = req.body;
+    if (!usernameOrEmail || !password) {
+      return res.status(400).send({
+        status: "error",
+        message: "Email or Username and password is required",
+      });
+    }
+    const lowercaseUsernameOrEmail = usernameOrEmail.toLowerCase();
+    const accountExist = false;
+    const queryResult = await client.query(checkUserLoginExistenceQuery, [
+      lowercaseUsernameOrEmail,
+      lowercaseUsernameOrEmail,
+    ]);
+
+    if (queryResult.rows.length > 0) {
+      bcrypt.compare(
+        password.toString(),
+        queryResult.rows[0].password,
+        (err, response) => {
+          if (err) {
+            return res
+              .status(400)
+              .send({ status: "error", message: "Server error" });
+            // Password compare error
+          }
+          if (response) {
+            const id = queryResult.rows[0].user_id;
+            const token = JWT.sign({ id: id }, process.env.TOKEN_SECRET, {
+              expiresIn: "1d",
+            });
+            delete queryResult.rows[0].password;
+            return res.status(200).header("auth-token", token).send({
+              status: "success",
+              message: "Login successful",
+              data: queryResult.rows[0],
+              token: token,
+            });
+          } else {
+            return res
+              .status(400)
+              .send({ status: "error", message: "Wrong email or password." });
+            // password did not match
+          }
+        }
+      );
+    } else {
+      return res
+        .status(400)
+        .send({ status: "error", message: "Wrong email or password." });
+      // wrong username or email
+    }
+  } catch (error) {
+    await client.query("ROLLBACK"); // Rollback the transaction in case of an error
+    console.error("Database error:", error);
+    return res.status(500).send({ status: "error", message: error.message });
+  } finally {
+    client.release(); // Release the database client back to the pool
+  }
+};
+
+const getStaffData = async (req, res) => {
+  try {
+    pool.query(getAllStaffsDataQuery, (queryError, queryResult) => {
+      if (queryError) {
+        console.error("Database error1:", queryError);
+        return res.status(400).send({
+          status: "error",
+          message: queryError.message,
+          detail: queryError.detail,
+        });
+      }
+      res
+        .status(200)
+        .send({
+          status: "success",
+          data: queryResult.rows,
+          total: queryResult.rows.length,
+        });
+    });
+  } catch (error) {
+    console.error("Database error2:", error);
+    res.status(500).send({
+      status: "error",
+      message: "An error occurred while fetching data",
+    });
+  }
+};
+
+const getAllCustomersAndOrdersData = async (req, res) => {
+  try {
+    pool.query(getAllCustomersAndOrdersDataQuery, (queryError, queryResult) => {
+      if (queryError) {
+        console.error("Database error1:", queryError);
+        return res.status(400).send({
+          status: "error",
+          message: queryError.message,
+          detail: queryError.detail,
+        });
+      }
+      res
+        .status(200)
+        .send({
+          status: "success",
+          data: queryResult.rows,
+          total: queryResult.rows.length,
+        });
+    });
+  } catch (error) {
+    console.error("Database error2:", error);
+    res.status(500).send({
+      status: "error",
+      message: "An error occurred while fetching data",
+    });
+  }
+};
+
+
+const getSingleCustomerOrderData = async (req, res) => {
+  const id = parseInt(req.params.id);
+  try {
+    // console.log(first)
+    pool.query(getSingleCustomerOrderDataQuery, [id], (queryError, queryResult) => {
+      if (queryError) {
+        console.error("Database error1:", queryError);
+        return res.status(400).send({
+          status: "error",
+          message: queryError.message,
+          detail: queryError.detail,
+        });
+      }
+      res
+        .status(200)
+        .send({
+          status: "success",
+          data: queryResult.rows[0] ? queryResult.rows[0] : [],
+          total: queryResult.rows.length,
+        });
+    });
+  } catch (error) {
+    console.error("Database error2:", error);
+    res.status(500).send({
+      status: "error",
+      message: "An error occurred while fetching data",
+    });
+  }
+};
+
+
+const getSingleStaffData = async (req, res) => {
+  try {
+    // console.log(first)
+    pool.query(getSingleStaffsDataQuery, [req.user.id], (queryError, queryResult) => {
+      if (queryError) {
+        console.error("Database error1:", queryError);
+        return res.status(400).send({
+          status: "error",
+          message: queryError.message,
+          detail: queryError.detail,
+        });
+      }
+      res
+        .status(200)
+        .send({
+          status: "success",
+          data: queryResult.rows[0] ? queryResult.rows[0] : [],
+          total: queryResult.rows.length,
+        });
+    });
+  } catch (error) {
+    console.error("Database error2:", error);
+    res.status(500).send({
+      status: "error",
+      message: "An error occurred while fetching data",
+    });
+  }
+};
+
 export {
   testRoute,
   addStaff,
   getCompanyPositions,
   addCustomer,
+  addOrders,
+  getAllOrders,
+  getAllStaffs,
+  getAllCustomers,
+  getTotalCounts,
+  login,
+  getStaffData,
+  getSingleStaffData,
+  getAllCustomersAndOrdersData,
+  getSingleCustomerOrderData,
 };

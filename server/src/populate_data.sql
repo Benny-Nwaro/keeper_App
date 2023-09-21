@@ -12,14 +12,37 @@ VALUES
     ('Product Manager', 'Manages product development and strategy');
 
 
--- Create users
-INSERT INTO users (username, password, email, first_name, last_name, date_of_birth, gender)
-VALUES
-    ('user1', 'password1', 'user1@example.com', 'John', 'Doe', '1990-01-01', 'Male'),
-    ('user2', 'password2', 'user2@example.com', 'Jane', 'Smith', '1985-03-15', 'Female');
+-- Insert data into the "Roles" table
+INSERT INTO Roles (role_name) VALUES ('Super Admin');
+INSERT INTO Roles (role_name) VALUES ('Admin');
+INSERT INTO Roles (role_name) VALUES ('Staff');
+INSERT INTO Roles (role_name) VALUES ('Student');
+INSERT INTO Roles (role_name) VALUES ('User');
 
--- Create staff records related to users
-INSERT INTO staffs (user_id, position_id, address, job_description, salary, date_employed, phone_number)
-VALUES
-    (currval(pg_get_serial_sequence('users', 'user_id')), 1, '123 Main St', 'Job description 1', '50000', '2023-09-19', '123-456-7890'),
-    (currval(pg_get_serial_sequence('users', 'user_id')), 2, '456 Elm St', 'Job description 2', '60000', '2023-09-20', '987-654-3210');
+-- Insert data into the "Permissions" table
+INSERT INTO Permissions (permission_name) VALUES ('View Grades');
+INSERT INTO Permissions (permission_name) VALUES ('Edit Grades');
+INSERT INTO Permissions (permission_name) VALUES ('Add Announcement');
+INSERT INTO Permissions (permission_name) VALUES ('Delete Announcement');
+
+-- Associate roles with permissions in the "RolePermissions" table
+-- For example, to grant "Admin" all permissions:
+-- Super Admin Has all the permissions granted
+-- Super Admin(id-1) has all permissions to view student, staff, admin and super admin viewing grants
+
+INSERT INTO RolePermissions (role_id, permission_id) VALUES (1, 1);
+INSERT INTO RolePermissions (role_id, permission_id) VALUES (1, 2);
+INSERT INTO RolePermissions (role_id, permission_id) VALUES (1, 3);
+INSERT INTO RolePermissions (role_id, permission_id) VALUES (1, 4);
+
+-- Admin(id-2) has only three permissions to view student, staff and admin viewing grants
+INSERT INTO RolePermissions (role_id, permission_id) VALUES (2, 1);
+INSERT INTO RolePermissions (role_id, permission_id) VALUES (2, 2);
+INSERT INTO RolePermissions (role_id, permission_id) VALUES (2, 3);
+
+-- Staff(id-3) has only two permissions to view student and staff viewing grants
+INSERT INTO RolePermissions (role_id, permission_id) VALUES (3, 1);
+INSERT INTO RolePermissions (role_id, permission_id) VALUES (3, 2);
+
+-- Student(id-4) has only one permission which is student viewing
+INSERT INTO RolePermissions (role_id, permission_id) VALUES (4, 1);
