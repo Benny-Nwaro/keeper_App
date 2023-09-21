@@ -64,7 +64,7 @@ const getAllStaffsDataQuery = `
     INNER JOIN staffs USING(user_id) 
   `;
 
-const getAllCustomersAndOrdersDataQuery = `
+const getAllCustomersAndUsersDataQuery = `
 SELECT 
 user_id,
 username,
@@ -105,7 +105,7 @@ INNER JOIN staffs USING(user_id)
 WHERE user_id = $1;
   `;
 
-const getSingleCustomerOrderDataQuery = `
+const getSingleCustomerUserDataQuery = `
 SELECT 
 user_id,
 username,
@@ -127,10 +127,42 @@ WHERE user_id = $1;
 
 const getStudentIdQuery = "SELECT * FROM staffs WHERE id = $1";
 
+
+
+
+const getAllCustomersAndUsersAndOrdersDataQuery = `
+SELECT
+c.customer_id,
+c.phone_number,
+c.customer_address,
+c.loyalty_points, 
+u.username, 
+u.first_name, 
+u.last_name, 
+u.is_verified, 
+u.role_id, 
+u.email, 
+order_id,
+cloth_type,
+quantity,
+order_status,
+order_payment,
+order_description
+FROM
+customers c
+INNER JOIN orders o 
+  ON o.customer_id = c.customer_id
+INNER JOIN users u 
+  ON c.user_id = u.user_id
+  `;
+
+
+
 export {
-  getSingleCustomerOrderDataQuery,
+  getAllCustomersAndUsersAndOrdersDataQuery,
+  getSingleCustomerUserDataQuery,
   getStudentIdQuery,
-  getAllCustomersAndOrdersDataQuery,
+  getAllCustomersAndUsersDataQuery,
   getSingleStaffsDataQuery,
   getAllStaffsDataQuery,
   checkUserLoginExistenceQuery,

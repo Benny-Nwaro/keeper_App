@@ -13,8 +13,9 @@ import {
   login,
   getStaffData,
   getSingleStaffData,
-  getAllCustomersAndOrdersData,
-  getSingleCustomerOrderData,
+  getAllCustomersAndUsersData,
+  getSingleCustomerUserData,
+  getAllCustomersAndUserAndOrdersData,
 } from "./controller.js";
 import verifyToken from "./verifyToken.js";
 
@@ -33,7 +34,8 @@ router.get("/all-counts", verifyToken, getTotalCounts);
 router.post("/login", login);
 router.get("/all-staff-data", verifyToken, getStaffData);
 router.get("/staff-profile", verifyToken, getSingleStaffData);
-router.get("/all-customers-orders", verifyToken, getAllCustomersAndOrdersData);
-router.get("/customer-order/:id", verifyToken, getSingleCustomerOrderData);
+router.get("/all-customers-users", verifyToken, getAllCustomersAndUsersData);
+router.get("/all-customers-user-orders", verifyToken, getAllCustomersAndUserAndOrdersData);
+router.get("/customer-user/:id", verifyToken, getSingleCustomerUserData);
 
 export default router;

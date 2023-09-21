@@ -15,8 +15,9 @@ import {
   getAllStaffsDataQuery,
   getUsersQuery,
   getSingleStaffsDataQuery,
-  getAllCustomersAndOrdersDataQuery,
-  getSingleCustomerOrderDataQuery,
+  getAllCustomersAndUsersDataQuery,
+  getSingleCustomerUserDataQuery,
+  getAllCustomersAndUsersAndOrdersDataQuery,
 } from "./queries.js";
 import * as bcrypt from "bcrypt";
 import JWT from "jsonwebtoken";
@@ -690,13 +691,11 @@ const getStaffData = async (req, res) => {
           detail: queryError.detail,
         });
       }
-      res
-        .status(200)
-        .send({
-          status: "success",
-          data: queryResult.rows,
-          total: queryResult.rows.length,
-        });
+      res.status(200).send({
+        status: "success",
+        data: queryResult.rows,
+        total: queryResult.rows.length,
+      });
     });
   } catch (error) {
     console.error("Database error2:", error);
@@ -707,9 +706,9 @@ const getStaffData = async (req, res) => {
   }
 };
 
-const getAllCustomersAndOrdersData = async (req, res) => {
+const getAllCustomersAndUsersData = async (req, res) => {
   try {
-    pool.query(getAllCustomersAndOrdersDataQuery, (queryError, queryResult) => {
+    pool.query(getAllCustomersAndUsersDataQuery, (queryError, queryResult) => {
       if (queryError) {
         console.error("Database error1:", queryError);
         return res.status(400).send({
@@ -718,13 +717,11 @@ const getAllCustomersAndOrdersData = async (req, res) => {
           detail: queryError.detail,
         });
       }
-      res
-        .status(200)
-        .send({
-          status: "success",
-          data: queryResult.rows,
-          total: queryResult.rows.length,
-        });
+      res.status(200).send({
+        status: "success",
+        data: queryResult.rows,
+        total: queryResult.rows.length,
+      });
     });
   } catch (error) {
     console.error("Database error2:", error);
@@ -735,28 +732,29 @@ const getAllCustomersAndOrdersData = async (req, res) => {
   }
 };
 
-
-const getSingleCustomerOrderData = async (req, res) => {
+const getSingleCustomerUserData = async (req, res) => {
   const id = parseInt(req.params.id);
   try {
     // console.log(first)
-    pool.query(getSingleCustomerOrderDataQuery, [id], (queryError, queryResult) => {
-      if (queryError) {
-        console.error("Database error1:", queryError);
-        return res.status(400).send({
-          status: "error",
-          message: queryError.message,
-          detail: queryError.detail,
-        });
-      }
-      res
-        .status(200)
-        .send({
+    pool.query(
+      getSingleCustomerUserDataQuery,
+      [id],
+      (queryError, queryResult) => {
+        if (queryError) {
+          console.error("Database error1:", queryError);
+          return res.status(400).send({
+            status: "error",
+            message: queryError.message,
+            detail: queryError.detail,
+          });
+        }
+        res.status(200).send({
           status: "success",
           data: queryResult.rows[0] ? queryResult.rows[0] : [],
           total: queryResult.rows.length,
         });
-    });
+      }
+    );
   } catch (error) {
     console.error("Database error2:", error);
     res.status(500).send({
@@ -765,28 +763,115 @@ const getSingleCustomerOrderData = async (req, res) => {
     });
   }
 };
-
 
 const getSingleStaffData = async (req, res) => {
   try {
     // console.log(first)
-    pool.query(getSingleStaffsDataQuery, [req.user.id], (queryError, queryResult) => {
-      if (queryError) {
-        console.error("Database error1:", queryError);
-        return res.status(400).send({
-          status: "error",
-          message: queryError.message,
-          detail: queryError.detail,
-        });
-      }
-      res
-        .status(200)
-        .send({
+    pool.query(
+      getSingleStaffsDataQuery,
+      [req.user.id],
+      (queryError, queryResult) => {
+        if (queryError) {
+          console.error("Database error1:", queryError);
+          return res.status(400).send({
+            status: "error",
+            message: queryError.message,
+            detail: queryError.detail,
+          });
+        }
+        res.status(200).send({
           status: "success",
           data: queryResult.rows[0] ? queryResult.rows[0] : [],
           total: queryResult.rows.length,
         });
+      }
+    );
+  } catch (error) {
+    console.error("Database error2:", error);
+    res.status(500).send({
+      status: "error",
+      message: "An error occurred while fetching data",
     });
+  }
+};
+
+const getAllCustomersAndUserAndOrdersData = async (req, res) => {
+  try {
+    pool.query(
+      getAllCustomersAndUsersAndOrdersDataQuery,
+      (queryError, queryResult) => {
+        if (queryError) {
+          console.error("Database error1:", queryError);
+          return res.status(400).send({
+            status: "error",
+            message: queryError.message,
+            detail: queryError.detail,
+          });
+        }
+        // Create a dictionary to store customers and their orders
+        const customerData = {};
+
+        queryResult.rows.forEach((row) => {
+          // Extract customer and order data
+          const {
+            customer_id,
+            phone_number,
+            customer_address,
+            loyalty_points,
+            username,
+            first_name,
+            last_name,
+            is_verified,
+            role_id,
+            email,
+            order_id,
+            cloth_type,
+            quantity,
+            order_status,
+            order_payment,
+            order_description,
+          } = row;
+
+          // Check if the customer is already in the dictionary
+          if (!customerData[customer_id]) {
+            // If not, create a new customer object
+            customerData[customer_id] = {
+              customer_id,
+              phone_number,
+              customer_address,
+              loyalty_points,
+              username,
+              first_name,
+              last_name,
+              is_verified,
+              role_id,
+              email,
+              orders: [], // Initialize an empty array for orders
+              total_orders: 0,
+            };
+          }
+
+          // Add the order to the customer's orders array
+          customerData[customer_id].orders.push({
+            order_id,
+            cloth_type,
+            quantity,
+            order_status,
+            order_payment,
+            order_description,
+          });
+          customerData[customer_id].total_orders += 1;
+        });
+
+        // Convert the dictionary values (customers) to an array
+        const customersArray = Object.values(customerData);
+        res.status(200).send({
+          status: "success",
+          data: customersArray,
+          total: customersArray.length,
+        });
+      }
+    );
   } catch (error) {
     console.error("Database error2:", error);
     res.status(500).send({
@@ -809,6 +894,7 @@ export {
   login,
   getStaffData,
   getSingleStaffData,
-  getAllCustomersAndOrdersData,
-  getSingleCustomerOrderData,
+  getAllCustomersAndUsersData,
+  getSingleCustomerUserData,
+  getAllCustomersAndUserAndOrdersData,
 };
