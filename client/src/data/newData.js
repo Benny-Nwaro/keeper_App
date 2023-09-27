@@ -21,37 +21,26 @@ export const links = [
       },
     ],
   },
+  {
+    title: "Home",
+    links: [
+      {
+        name: "home",
+        icon: FiShoppingBag,
+      },
+    ],
+  },
 
   {
-    title: "Expenses",
+    title: "Customers",
     links: [
       {
         name: "orders",
         icon: AiOutlineShoppingCart,
       },
-      {
-        name: "payments",
-        icon: IoMdContacts,
-      },
-      {
-        name: "salaries",
-        icon: RiContactsLine,
-      },
     ],
   },
-  {
-    title: "Users",
-    links: [
-      {
-        name: "customers",
-        icon: AiOutlineCalendar,
-      },
-      {
-        name: "clients",
-        icon: BsKanban,
-      },
-    ],
-  },
+ 
   {
     title: "Measurements",
     links: [
@@ -59,40 +48,16 @@ export const links = [
         name: "sewing",
         icon: AiOutlineStock,
       },
-      
-      {
-        name: "store",
-        icon: AiOutlineAreaChart,
-      },
     ],
   },
   {
     title: "Admin",
     links: [
       {
-        name: "settings",
-        icon: AiOutlineBarChart,
-      },
-      {
-        name: "reports",
-        icon: FiPieChart,
-      },
-      {
         name: "staffs",
         icon: RiStockLine,
       },
-      {
-        name: "locations",
-        icon: BsBarChart,
-      },
-      {
-        name: "emails",
-        icon: GiLouvrePyramid,
-      },
-      {
-        name: "notifications",
-        icon: AiOutlineBarChart,
-      },
+    
       {
         name: "feedbacks",
         icon: RiStockLine,

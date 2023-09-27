@@ -8,7 +8,7 @@ import { avatar } from "../assets/images";
 import { useMyStateNav } from "../contexts/ContextProvider";
 import { Tooltip } from "@mantine/core";
 import PropTypes from "prop-types";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const NavButton = ({ title, customFunc, icon, color, dotColor }) => {
   return (
@@ -38,7 +38,18 @@ const NavButton = ({ title, customFunc, icon, color, dotColor }) => {
 export const DashBoardNav = () => {
   const { setActiveMenu, handleClick, screenSize, setScreenSize } =
     useMyStateNav();
+  const [userData, setUserData] = useState();
+  const currentUser = localStorage.getItem("user_data");
 
+  useEffect(() => {
+    try {
+      const data = JSON.parse(currentUser);
+      console.log(data); // Logging the parsed data, not userData
+      setUserData(data);
+    } catch (error) {
+      console.error("Error parsing user data:", error);
+    }
+  }, [currentUser]);
   useEffect(() => {
     const handleResize = () => setScreenSize(window.innerWidth);
 
@@ -55,7 +66,7 @@ export const DashBoardNav = () => {
     }
   }, [screenSize, setActiveMenu]);
   return (
-    <div className="flex justify-between p-2 md:mx-6 relative">
+    <div className="flex justify-between p-2 md:mx-6 z-[1000]">
       <NavButton
         title="Menu"
         customFunc={() => setActiveMenu((prevActiveMenu) => !prevActiveMenu)}
@@ -99,7 +110,7 @@ export const DashBoardNav = () => {
             <p>
               <span className="text-gray-400 text-14 ">Hi, </span>{" "}
               <span className="text-gray-400 font-bold ml-1 text-14">
-                Favour
+                {userData?.data?.first_name}
               </span>
             </p>
             <MdKeyboardArrowDown className="text-gray-400 text-14" />

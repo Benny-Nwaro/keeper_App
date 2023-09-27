@@ -18,6 +18,20 @@ export const NavContextProvider = ({ children }) => {
   const [themeSettings, setThemeSettings] = useState(false);
   const [activeMenu, setActiveMenu] = useState(true);
   const [isClicked, setIsClicked] = useState(initialState);
+  const [currentUser, setCurrentUser] = useState([]);
+
+
+
+  
+  const getCurrentUser = () => {
+    setCurrentUser(JSON.parse(localStorage.getItem("user_data")));
+    
+  };
+
+  const logout = () => {
+    setCurrentUser(null);
+    localStorage.removeItem("user_data");
+  };
   const setMode = (e) => {
     setCurrentMode(e.target.value);
     localStorage.setItem("themeMode", e.target.value);
@@ -50,6 +64,10 @@ export const NavContextProvider = ({ children }) => {
         setColor,
         themeSettings,
         setThemeSettings,
+        currentUser,
+        getCurrentUser,
+        setCurrentUser,
+        logout,
       }}
     >
       {children}

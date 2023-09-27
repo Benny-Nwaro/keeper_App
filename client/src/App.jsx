@@ -14,7 +14,7 @@ import { NotFound } from "./pages/errors/notfound/NotFound";
 import { Contact } from "./pages/landingpage/contact/Contact";
 import { About } from "./pages/landingpage/about/About";
 import { Corporate } from "./pages/landingpage/corporate/Corporate";
-import { DashBoardLayout, LandingPageLayout } from "./components";
+import { DashBoardLayout, LandingPageLayout, OrderId } from "./components";
 import { Services } from "./pages/landingpage/services/Services";
 import { DashBoardHome } from "./pages/dashboard/dashboardhome/DashBoardHome";
 import { Customers } from "./pages/dashboard/customers/Customers";
@@ -29,7 +29,11 @@ import { Salaries } from "./pages/dashboard/salaries/Salaries";
 import { Settings } from "./pages/dashboard/settings/Settings";
 import { Store } from "./pages/dashboard/store/Store";
 import { Users } from "./pages/dashboard/users/Users";
-import {Payment} from "./pages/dashboard/payments/Payment"
+import { Payment } from "./pages/dashboard/payments/Payment";
+// import axios from "axios";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 // import { NavBar } from "./components";
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -57,6 +61,7 @@ const router = createBrowserRouter(
         <Route path="store" element={<Store />} />
         <Route path="users" element={<Users />} />{" "}
         <Route path="reports" element={<Reports />} />{" "}
+        <Route path="order/:customerId" element={<OrderId />} />
         <Route path="*" element={<NotFound />} />
       </Route>
 
@@ -66,8 +71,10 @@ const router = createBrowserRouter(
   )
 );
 function App() {
+  // axios.defaults.withCredentials = true;
   return (
     <NavContextProvider>
+      <ToastContainer />
       <RouterProvider router={router} />
     </NavContextProvider>
   );
